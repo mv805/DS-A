@@ -1,15 +1,8 @@
 function merge(arr, p, q, r) {
-    
+
     //assumption is arr is sorted from p to q, and from q+1 to r
     let n1 = q - p + 1;
-    console.log(n1);
-    let n2 = r - q; 
-    console.log(n2);
-
-    console.log(arr);
-    console.log(p);
-    console.log(q);
-    console.log(r);
+    let n2 = r - q;
 
     let L = [];
     let R = [];
@@ -17,12 +10,9 @@ function merge(arr, p, q, r) {
     for (let i = 0; i < n1; i++) {
         L[i] = arr[i + p];
     }
-    console.log(L);
-
     for (let j = 0; j < n2; j++) {
         R[j] = arr[(j + q) + 1];
     }
-    console.log(R);
 
     let Lindex = 0;
     let Rindex = 0;
@@ -43,9 +33,6 @@ function merge(arr, p, q, r) {
             break;
         }
     }
-    console.log(Rindex);
-    console.log(Lindex);
-    console.log(k);
 
     while (Rindex !== n2) {
         arr[k] = R[Rindex];
@@ -53,31 +40,20 @@ function merge(arr, p, q, r) {
         k++;
     }
 
-    console.log(Rindex);
-    console.log(Lindex);
-    console.log(k);
-
     while (Lindex !== n1) {
         arr[k] = L[Lindex];
         Lindex++;
         k++;
     }
-    console.log(arr);
 }
 
 function mergeSort(arr, p, r) {
-    
+
     if (p >= r) {
         return;
     }
-    
-    let q = Math.floor((r + p) / 2);
-    console.log(q);
-    // if (arr.length % 2 !== 0){
-    //     q -= 1;
-    // }
-    console.log(q);
 
+    let q = Math.floor((r + p) / 2);
     mergeSort(arr, p, q);
     mergeSort(arr, (q + 1), r);
     merge(arr, p, q, r);
@@ -86,7 +62,7 @@ function mergeSort(arr, p, r) {
 
 let testArray = [2, 5, 4, 7, 1, 3, 2, 6];
 let testArray2 = [3, 41, 52, 26, 38, 57, 9, 49];
-let testArray3 = [ 24, 25, 6, 22, 4, 4, 20, 20, 19, 18, 11 ];
+let testArray3 = [24, 25, 6, 22, 4, 4, 20, 20, 19, 18, 11];
 
 mergeSort(testArray, 0, testArray.length - 1);
 console.log(testArray);
@@ -96,4 +72,3 @@ console.log(testArray2);
 
 mergeSort(testArray3, 0, testArray3.length - 1);
 console.log(testArray3);
-
