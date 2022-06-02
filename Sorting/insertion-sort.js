@@ -11,7 +11,7 @@ function insertionSort(nums) {
         /* Move elements of arr[0..i-1], that are 
         greater than key, to one position ahead 
         of their current position */
-        while (j >= 0 && nums[j] > key) {
+        while (j >= 0 && nums[j] > nums[i]) {
             nums[j + 1] = nums[j];
             j--;
         }
